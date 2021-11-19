@@ -8,7 +8,7 @@ public class PathFollower : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private PathCreator _pathCreator;
-
+    [SerializeField] private Vector3 _test; 
     private Rigidbody _rigidbody; 
     private float _distanceTravelled;
 
@@ -16,17 +16,17 @@ public class PathFollower : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
 
-        _rigidbody.MovePosition(_pathCreator.path.GetPointAtDistance(_distanceTravelled)); 
-    }
+        _rigidbody.MovePosition(_pathCreator.path.GetPointAtDistance(_distanceTravelled));
 
-    private void Update()
-    {
-        _distanceTravelled += Time.deltaTime * _speed;
+      }
 
-        Vector3 nextPoint = _pathCreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Loop);
-        nextPoint.y = transform.position.y;
+      private void Update()
+      {
+          _distanceTravelled += Time.deltaTime * _speed;
 
-        transform.LookAt(nextPoint); 
+          Vector3 nextPoint = _pathCreator.path.GetPointAtDistance(_distanceTravelled, EndOfPathInstruction.Stop);
+             nextPoint.y  = transform.position.y;
+             transform.LookAt(nextPoint + new Vector3(1,0,0)); 
 
         _rigidbody.MovePosition(nextPoint); 
     }

@@ -43,7 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa8e62ae419407488510f0a930defae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _humanInTowerRange: {x: 2, y: 4}
+  _humanInTowerRange: {x: 1, y: 3}
   _humansTemplates:
   - {fileID: 197370463554178938, guid: cc3c3ae3985cd8f448e5cd97d663c20e, type: 3}
   - {fileID: 2720639075636757386, guid: 334111ca4e2367f41a8b9e8e6773e30d, type: 3}
+  _bounceForce: 250
+  _bounceRadius: 500
