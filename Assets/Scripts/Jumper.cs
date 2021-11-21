@@ -6,12 +6,14 @@ public class Jumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
 
+    private float _startJumpForce;
     private bool _isGrounded; 
     private Rigidbody _rigidbody;
 
     private void Start()
     {
-        _rigidbody = GetComponent<Rigidbody>(); 
+        _rigidbody = GetComponent<Rigidbody>();
+        _startJumpForce = _jumpForce; 
     }
 
     private void Update()
@@ -30,4 +32,31 @@ public class Jumper : MonoBehaviour
             _isGrounded = true; 
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out PointJump pointJump))
+            {
+               Tower ColliderTower = pointJump.GetComponentInParent<Tower>(); 
+                ChangeJumpForse(ColliderTower.GetComponent<Tower>().GetSizeHumans());
+               pointJump.ChangeColor(); 
+            }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out PointJump pointJump))
+        {
+            _jumpForce = _startJumpForce;
+            pointJump.StartColor(); 
+        }
+    }
+
+    private void ChangeJumpForse(int Change)
+    {
+        _jumpForce = _jumpForce + (Change - 1) * 20f; 
+    }
+
+
+
 }

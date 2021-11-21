@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tower : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private Human[] _humansTemplates;
     [SerializeField] private float _bounceForce;
     [SerializeField] private float _bounceRadius;
+    [SerializeField] private TMP_Text _sizeHumons;
 
     private List<Human> _humanInTower;
 
@@ -15,7 +17,8 @@ public class Tower : MonoBehaviour
     {
         _humanInTower = new List<Human>();
         int humanInTowerCount = Random.Range(_humanInTowerRange.x, _humanInTowerRange.y);
-        SpawnHumans(humanInTowerCount); 
+        SpawnHumans(humanInTowerCount);
+        _sizeHumons.text = GetSizeHumans().ToString(); 
     }
 
     private void SpawnHumans(int humanCount)
@@ -68,6 +71,11 @@ public class Tower : MonoBehaviour
         {
                     human.Bounce(_bounceForce, transform.position, _bounceRadius);
         }
+    }
+
+    public int GetSizeHumans()
+    {
+        return _humanInTower.Count; 
     }
 }
 
