@@ -8,7 +8,8 @@ public class PlayerTower : MonoBehaviour
     [SerializeField] private Human _startHuman; 
     [SerializeField] private Transform _distanceChecker;
     [SerializeField] private float _fixationMaxDistance;
-    [SerializeField] private BoxCollider _checkCollider; 
+    [SerializeField] private BoxCollider _checkCollider;
+    [SerializeField] private Checker _checker;
 
     private List<Human> _humans;
 
@@ -67,10 +68,15 @@ public class PlayerTower : MonoBehaviour
 
     private void DisplaceCheckers(Human human)
     {
-        float displaceScale = 1.5f; 
-        Vector3 distanceCheckerNewPosition = _distanceChecker.position;
-        distanceCheckerNewPosition.y -= human.transform.localScale.y * displaceScale;
-        _distanceChecker.position = distanceCheckerNewPosition;
+        //  float displaceScale = 1f;
+        //  float displaceScale = 1.5f; 
+        //   float displaceScale = 1.35f;
+        /*  Vector3 distanceCheckerNewPosition = _distanceChecker.position;
+          distanceCheckerNewPosition.y -= human.transform.localScale.y * displaceScale;
+          _distanceChecker.position = distanceCheckerNewPosition;
+          _checkCollider.center = _distanceChecker.localPosition; */
+
+        _distanceChecker.position = _checker.GetPosition();
         _checkCollider.center = _distanceChecker.localPosition; 
 
     }

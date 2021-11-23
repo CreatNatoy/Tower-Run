@@ -64,7 +64,6 @@ public class Tower : MonoBehaviour
 
     public void Break() // effect destroy
     {
-       // Destroy(gameObject); 
        Human[] humans = GetComponentsInChildren<Human>();
 
         foreach(var human in humans)
