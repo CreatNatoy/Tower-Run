@@ -658,8 +658,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerTower: {fileID: 1444506458}
+  _target: {fileID: 1519528009}
   _offsetPosition: {x: -6, y: 4.5, z: -5.43}
-  _cameraSpeed: 6
+  _cameraSpeed: 8
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,7 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5808a774d6d99d4aabc007c47bf6216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHuman: {fileID: 7547232149847038926, guid: 74668406424bde44ab68236919b45ac9, type: 3}
+  _startHuman: {fileID: 1884637874889457063, guid: 48bb763db206119498659853a21f6162, type: 3}
   _distanceChecker: {fileID: 891382834}
   _fixationMaxDistance: 0.4
   _checkCollider: {fileID: 1444506453}

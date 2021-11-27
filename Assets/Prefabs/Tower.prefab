@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578168261001493775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.3, y: 0.01, z: 0}
+  m_LocalPosition: {x: -3.53, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 0.025, z: 1}
   m_Children:
   - {fileID: 2535168297993975834}
@@ -136,7 +136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762076508153684197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.533, y: 0.2613897, z: 2.0606885}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8471375574659484270}
@@ -155,10 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa8e62ae419407488510f0a930defae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _humanInTowerRange: {x: 3, y: 4}
+  _humanInTowerRange: {x: 1, y: 4}
   _humansTemplates:
-  - {fileID: 197370463554178938, guid: cc3c3ae3985cd8f448e5cd97d663c20e, type: 3}
-  - {fileID: 2720639075636757386, guid: 334111ca4e2367f41a8b9e8e6773e30d, type: 3}
+  - {fileID: 2565578930869608078, guid: 3722a13334c38f24ca121304d809e536, type: 3}
   _bounceForce: 250
   _bounceRadius: 500
   _sizeHumons: {fileID: 7030532193095748078}
