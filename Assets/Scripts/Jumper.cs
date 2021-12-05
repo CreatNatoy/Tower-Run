@@ -54,7 +54,7 @@ public class Jumper : MonoBehaviour
 
     private void ChangeJumpForse(int Change)
     {
-        _jumpForce = _jumpForce + (Change - 1) * 10f; 
+        _jumpForce = _jumpForce + (Change - 1) * 25f; 
     }
 
 

@@ -12,6 +12,7 @@ public class PlayerTower : MonoBehaviour
     [SerializeField] private Checker _checker;
 
     private List<Human> _humans;
+    private bool _oneObstacle = false; 
 
     public event UnityAction<int> HumanAdded; 
 
@@ -50,8 +51,42 @@ public class PlayerTower : MonoBehaviour
             if(collisionTower != null) 
             collisionTower.Break();
         }
+          if(collision.gameObject.tag == "Obstacle")
+        {
+            Obstacle obstacle = collision.gameObject.GetComponentInParent<Obstacle>();
+            CollisionObstacle(obstacle); 
+        }
     }
-  
+
+    private void CollisionObstacle(Obstacle obstacle)
+    {
+        int sizeObstacle = obstacle.SizeObstacle;
+        float jumpPlayer = 1f; 
+        if (transform.position.y > jumpPlayer && !_oneObstacle)
+        {
+            sizeObstacle--;
+        }
+        if (sizeObstacle < _humans.Count && !_oneObstacle)
+        {
+            DeleteHumans(sizeObstacle); 
+        }
+        else if (!_oneObstacle)
+        {
+            Debug.Log("You die");
+        }
+    }
+
+    private void DeleteHumans(int sizeObstacle)
+    {
+        _oneObstacle = true;
+        _humans[0].StopRun();
+        for (int i = 0; i < sizeObstacle; i++)
+        {
+            Destroy(_humans[i].gameObject);
+        }
+        _humans.RemoveRange(0, sizeObstacle);
+        _humans[0].Run();
+    }
 
     private void InsertHuman(Human collectedHumans)
     {

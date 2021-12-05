@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578168261001493775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.53, y: 0.01, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 0.025, z: 1}
   m_Children:
   - {fileID: 2535168297993975834}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa8e62ae419407488510f0a930defae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _humanInTowerRange: {x: 1, y: 4}
+  _humanInTowerRange: 0
   _humansTemplates:
   - {fileID: 2565578930869608078, guid: 3722a13334c38f24ca121304d809e536, type: 3}
   - {fileID: 5677607009005770865, guid: 24b9e0f17eebd8a4b9272a220d5d723c, type: 3}

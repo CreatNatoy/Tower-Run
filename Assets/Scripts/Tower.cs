@@ -5,7 +5,7 @@ using TMPro;
 
 public class Tower : MonoBehaviour
 {
-    [SerializeField] private Vector2Int _humanInTowerRange;  
+    [SerializeField] private int _humanInTowerRange;  
     [SerializeField] private Human[] _humansTemplates;
     [SerializeField] private float _bounceForce;
     [SerializeField] private float _bounceRadius;
@@ -16,8 +16,8 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         _humanInTower = new List<Human>();
-        int humanInTowerCount = Random.Range(_humanInTowerRange.x, _humanInTowerRange.y);
-        SpawnHumans(humanInTowerCount);
+  //      int humanInTowerCount = Random.Range(_humanInTowerRange.x, _humanInTowerRange.y);
+        SpawnHumans(_humanInTowerRange);
         _sizeHumons.text = GetSizeHumans().ToString(); 
     }
 
@@ -28,7 +28,6 @@ public class Tower : MonoBehaviour
         for(int i =0; i < humanCount; i++)
         {
             Human spawnedHuman = _humansTemplates[Random.Range(0, _humansTemplates.Length)];
-           // spawnedHuman.transform.rotation = Quaternion.Euler(0, 90, 0); 
 
             _humanInTower.Add(Instantiate(spawnedHuman, spawnPoint, Quaternion.Euler(0, 90, 0), transform));
 
