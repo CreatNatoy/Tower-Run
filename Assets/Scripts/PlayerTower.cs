@@ -11,7 +11,8 @@ public class PlayerTower : MonoBehaviour
     [SerializeField] private BoxCollider _checkCollider;
     [SerializeField] private Checker _checker;
     [SerializeField] private Menu _menuCanvas;
-    [SerializeField] private GameObject _panelGameOver; 
+    [SerializeField] private GameObject _panelGameOver;
+    [SerializeField] private GameObject _panelFinish; 
 
     private Jumper _heightPlayerTower; 
 
@@ -61,6 +62,10 @@ public class PlayerTower : MonoBehaviour
             Obstacle obstacle = collision.gameObject.GetComponentInParent<Obstacle>();
             CollisionObstacle(obstacle); 
         }
+          if(collision.gameObject.TryGetComponent(out Finish finish))
+        {
+            FinishGame(); 
+        }
     }
 
     private void CollisionObstacle(Obstacle obstacle)
@@ -74,18 +79,34 @@ public class PlayerTower : MonoBehaviour
         {
             DeleteHumans(sizeObstacle); 
         }
-        else if (!_oneObstacle)
+        else if(!_oneObstacle)
         {
             GameOver(); 
         }
+        Invoke("UpdateOneObstacle", 1); 
+    }
+
+    private void UpdateOneObstacle()
+    {
+        _oneObstacle = false; 
     }
 
     private void GameOver()
     {
-        _panelGameOver.SetActive(true); 
-        _menuCanvas.OnPanel(_panelGameOver);
-        _menuCanvas.TimeGame(0); 
-        Debug.Log("You die");
+        _panelGameOver.SetActive(true);
+        ActivePanel(_panelGameOver); 
+    }
+
+    private void FinishGame()
+    {
+        _panelFinish.SetActive(true);
+        ActivePanel(_panelFinish);
+    }
+
+    private void  ActivePanel(GameObject panel)
+    {
+        _menuCanvas.OnPanel(panel);
+        _menuCanvas.TimeGame(0);
     }
 
     private bool JumpedObstacle()
