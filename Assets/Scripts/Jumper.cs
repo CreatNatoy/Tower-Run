@@ -5,15 +5,23 @@ using UnityEngine;
 public class Jumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
+    [SerializeField] private SoundEffects _soundEffects; 
 
     private float _startJumpForce;
     private bool _isGrounded; 
     private Rigidbody _rigidbody;
+    private PlayerTower _updateCheker;
+    private float _heightPlayerTower;
+
+
+    public float HeightPlayerTower => _heightPlayerTower; 
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _startJumpForce = _jumpForce; 
+        _updateCheker = GetComponent<PlayerTower>(); 
+        _startJumpForce = _jumpForce;
+        _heightPlayerTower = transform.position.y; 
     }
 
     private void Update()
@@ -22,6 +30,9 @@ public class Jumper : MonoBehaviour
         {
             _isGrounded = false; 
             _rigidbody.AddForce(Vector3.up * _jumpForce);
+            _soundEffects.JumpUpSound();
+            if (_startJumpForce != _jumpForce)
+                _soundEffects.JumpStrongSound(); 
         }
     }
 
@@ -29,6 +40,9 @@ public class Jumper : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Road rouad))
         {
+            _heightPlayerTower = transform.position.y;
+            _updateCheker.DisplaceCheckers();
+            _soundEffects.JumpDownSound(); 
             _isGrounded = true; 
         }
     }
@@ -54,7 +68,8 @@ public class Jumper : MonoBehaviour
 
     private void ChangeJumpForse(int Change)
     {
-        _jumpForce = _jumpForce + (Change - 1) * 25f; 
+        _jumpForce = _jumpForce + 0.1f + (Change - 1) * 25f ;
+     
     }
 
 

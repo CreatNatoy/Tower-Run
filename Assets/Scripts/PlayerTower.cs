@@ -10,6 +10,10 @@ public class PlayerTower : MonoBehaviour
     [SerializeField] private float _fixationMaxDistance;
     [SerializeField] private BoxCollider _checkCollider;
     [SerializeField] private Checker _checker;
+    [SerializeField] private Menu _menuCanvas;
+    [SerializeField] private GameObject _panelGameOver; 
+
+    private Jumper _heightPlayerTower; 
 
     private List<Human> _humans;
     private bool _oneObstacle = false; 
@@ -18,6 +22,7 @@ public class PlayerTower : MonoBehaviour
 
     private void Start()
     {
+        _heightPlayerTower = GetComponent<Jumper>(); 
         _humans = new List<Human>();
         Vector3 spawnPoint = transform.position;
         _humans.Add(Instantiate(_startHuman, spawnPoint, Quaternion.identity, transform));
@@ -42,7 +47,7 @@ public class PlayerTower : MonoBehaviour
                         Human insetHuman = collectedHumans[i];
                         insetHuman.DeleteRigibody(); 
                         InsertHuman(insetHuman);
-                        DisplaceCheckers(insetHuman);
+                        DisplaceCheckers();
                     }
                     HumanAdded?.Invoke(_humans.Count);
                     _humans[0].Run();
@@ -61,8 +66,7 @@ public class PlayerTower : MonoBehaviour
     private void CollisionObstacle(Obstacle obstacle)
     {
         int sizeObstacle = obstacle.SizeObstacle;
-        float jumpPlayer = 1f; 
-        if (transform.position.y > jumpPlayer && !_oneObstacle)
+        if (JumpedObstacle() && !_oneObstacle)
         {
             sizeObstacle--;
         }
@@ -72,7 +76,27 @@ public class PlayerTower : MonoBehaviour
         }
         else if (!_oneObstacle)
         {
-            Debug.Log("You die");
+            GameOver(); 
+        }
+    }
+
+    private void GameOver()
+    {
+        _panelGameOver.SetActive(true); 
+        _menuCanvas.OnPanel(_panelGameOver);
+        _menuCanvas.TimeGame(0); 
+        Debug.Log("You die");
+    }
+
+    private bool JumpedObstacle()
+    {
+        if (_heightPlayerTower.HeightPlayerTower < transform.position.y - 1f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -101,18 +125,9 @@ public class PlayerTower : MonoBehaviour
         human.transform.localRotation = Quaternion.identity; 
     }
 
-    private void DisplaceCheckers(Human human)
+    public void DisplaceCheckers()
     {
-        //  float displaceScale = 1f;
-        //  float displaceScale = 1.5f; 
-        //   float displaceScale = 1.35f;
-        /*  Vector3 distanceCheckerNewPosition = _distanceChecker.position;
-          distanceCheckerNewPosition.y -= human.transform.localScale.y * displaceScale;
-          _distanceChecker.position = distanceCheckerNewPosition;
-          _checkCollider.center = _distanceChecker.localPosition; */
-
         _distanceChecker.position = _checker.GetPosition();
         _checkCollider.center = _distanceChecker.localPosition; 
-
     }
 }
