@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundEffects : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _jumpUp, _jumpDown, _jumpStrong; 
+    [SerializeField] private AudioClip _jumpUp, _jumpDown, _jumpStrong, _addCoin, _deleteHuman; 
 
     public void JumpUpSound()
     {
@@ -20,5 +20,15 @@ public class SoundEffects : MonoBehaviour
     public void JumpStrongSound()
     {
         _audioSource.PlayOneShot(_jumpStrong); 
+    }
+
+    public void AddCoinSound()
+    {
+        _audioSource.PlayOneShot(_addCoin); 
+    }
+
+    public void DeleteHuman()
+    {
+        _audioSource.PlayOneShot(_deleteHuman); 
     }
 }

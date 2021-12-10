@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PlayerTower : MonoBehaviour
 {
@@ -12,14 +13,18 @@ public class PlayerTower : MonoBehaviour
     [SerializeField] private Checker _checker;
     [SerializeField] private Menu _menuCanvas;
     [SerializeField] private GameObject _panelGameOver;
-    [SerializeField] private GameObject _panelFinish; 
+    [SerializeField] private GameObject _panelFinish;
+    [SerializeField] private Text _textCoins;
+    [SerializeField] private SoundEffects _soundEffects; 
 
+    private int _counterCoins; 
     private Jumper _heightPlayerTower; 
 
     private List<Human> _humans;
     private bool _oneObstacle = false; 
 
-    public event UnityAction<int> HumanAdded; 
+    public event UnityAction<int> HumanAddedCamera;
+    public event UnityAction<int> HumanDepriveCamera; 
 
     private void Start()
     {
@@ -28,7 +33,7 @@ public class PlayerTower : MonoBehaviour
         Vector3 spawnPoint = transform.position;
         _humans.Add(Instantiate(_startHuman, spawnPoint, Quaternion.identity, transform));
         _humans[0].Run();
-        HumanAdded?.Invoke(_humans.Count);
+        HumanAddedCamera?.Invoke(_humans.Count);
     }
 
 
@@ -50,7 +55,7 @@ public class PlayerTower : MonoBehaviour
                         InsertHuman(insetHuman);
                         DisplaceCheckers();
                     }
-                    HumanAdded?.Invoke(_humans.Count);
+                    HumanAddedCamera?.Invoke(_humans.Count);
                     _humans[0].Run();
                 }
             }
@@ -60,26 +65,39 @@ public class PlayerTower : MonoBehaviour
           if(collision.gameObject.tag == "Obstacle")
         {
             Obstacle obstacle = collision.gameObject.GetComponentInParent<Obstacle>();
+            if(!_oneObstacle)
             CollisionObstacle(obstacle); 
         }
           if(collision.gameObject.TryGetComponent(out Finish finish))
         {
             FinishGame(); 
         }
+          if(collision.gameObject.TryGetComponent(out Coin coin))
+        {
+            AddCoin(coin); 
+        }
     }
+
+    private void AddCoin(Coin coin)
+    {
+        coin.gameObject.SetActive(false);
+        _counterCoins++;
+        _textCoins.text = _counterCoins.ToString("D3");
+        _soundEffects.AddCoinSound(); 
+    }    
 
     private void CollisionObstacle(Obstacle obstacle)
     {
         int sizeObstacle = obstacle.SizeObstacle;
-        if (JumpedObstacle() && !_oneObstacle)
+        if (JumpedObstacle())
         {
             sizeObstacle--;
         }
-        if (sizeObstacle < _humans.Count && !_oneObstacle)
+        if (sizeObstacle < _humans.Count)
         {
             DeleteHumans(sizeObstacle); 
         }
-        else if(!_oneObstacle)
+        else
         {
             GameOver(); 
         }
@@ -102,6 +120,7 @@ public class PlayerTower : MonoBehaviour
         _panelFinish.SetActive(true);
         ActivePanel(_panelFinish);
     }
+
 
     private void  ActivePanel(GameObject panel)
     {
@@ -131,6 +150,8 @@ public class PlayerTower : MonoBehaviour
         }
         _humans.RemoveRange(0, sizeObstacle);
         _humans[0].Run();
+        HumanDepriveCamera?.Invoke(sizeObstacle);
+        _soundEffects.DeleteHuman(); 
     }
 
     private void InsertHuman(Human collectedHumans)

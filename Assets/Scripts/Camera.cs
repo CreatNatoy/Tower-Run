@@ -13,12 +13,14 @@ public class Camera : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerTower.HumanAdded += OnHumanAdded;
+        _playerTower.HumanAddedCamera += OnHumanAdded;
+        _playerTower.HumanDepriveCamera += OnHummanDeprive;
     }
 
     private void OnDisable()
     {
-        _playerTower.HumanAdded -= OnHumanAdded;
+        _playerTower.HumanAddedCamera -= OnHumanAdded;
+        _playerTower.HumanDepriveCamera -= OnHummanDeprive;
     }
 
     private void Start()
@@ -40,10 +42,12 @@ public class Camera : MonoBehaviour
 
     private void OnHumanAdded(int count)
     {
-        //  _offsetPosition = _offsetPosition + (Vector3.up + Vector3.back) * count;
-        // -6, 4.5, -5.43
-        //   _updateOffsetPosition += new Vector3(-0.25f, -0.5f, -0.25f) * count; 
         _updateOffsetPosition += new Vector3(-0.1f, 0, -0.1f) * count;
+    }
+
+    private void OnHummanDeprive(int count)
+    {
+        _updateOffsetPosition -= new Vector3(-0.1f, 0, -0.1f) * count;
     }
 
     private Vector3 GetPositionForCamera()
