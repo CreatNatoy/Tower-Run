@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 
-    public void OnPanel(GameObject panel)
+    public void activatePanel(GameObject panel)
     {
         panel.SetActive(true); 
     }

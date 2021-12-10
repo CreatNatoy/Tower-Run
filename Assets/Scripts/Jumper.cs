@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Jumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
@@ -10,7 +11,7 @@ public class Jumper : MonoBehaviour
     private float _startJumpForce;
     private bool _isGrounded; 
     private Rigidbody _rigidbody;
-    private PlayerTower _updateCheker;
+    private PlayerBehavior _updateCheker;
     private float _heightPlayerTower;
 
 
@@ -19,7 +20,7 @@ public class Jumper : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _updateCheker = GetComponent<PlayerTower>(); 
+        _updateCheker = GetComponent<PlayerBehavior>(); 
         _startJumpForce = _jumpForce;
         _heightPlayerTower = transform.position.y; 
     }

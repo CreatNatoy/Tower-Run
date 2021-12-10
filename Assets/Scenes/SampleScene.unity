@@ -2302,7 +2302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc3cf5d68e4ed1748a6d31aac5a2bc93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerTower: {fileID: 1444506458}
+  _playerBehavior: {fileID: 1444506461}
   _target: {fileID: 1519528009}
   _offsetPosition: {x: -6, y: 4.5, z: -5.43}
   _cameraSpeed: 8
@@ -3285,6 +3285,9 @@ GameObject:
   - component: {fileID: 1444506453}
   - component: {fileID: 1444506457}
   - component: {fileID: 1444506458}
+  - component: {fileID: 1444506460}
+  - component: {fileID: 1444506459}
+  - component: {fileID: 1444506461}
   m_Layer: 7
   m_Name: PlayerTower
   m_TagString: Untagged
@@ -3378,15 +3381,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startHuman: {fileID: 1884637874889457063, guid: 48bb763db206119498659853a21f6162, type: 3}
-  _distanceChecker: {fileID: 891382834}
-  _fixationMaxDistance: 0.4
-  _checkCollider: {fileID: 1444506453}
-  _checker: {fileID: 1519528010}
+--- !u!114 &1444506459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444506452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b121a789663026448b7d26f92ff5d8f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _menuCanvas: {fileID: 1376830365}
   _panelGameOver: {fileID: 2015156921}
   _panelFinish: {fileID: 1793426033}
+--- !u!114 &1444506460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444506452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb2ad169188e844898ce5f50a416395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1444506461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444506452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed49fbfdb0889b4ca7f90082bdb030d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _textCoins: {fileID: 1404849340}
   _soundEffects: {fileID: 826121033}
+  _distanceChecker: {fileID: 891382834}
+  _fixationMaxDistance: 0.3
+  _checkCollider: {fileID: 1444506453}
+  _checker: {fileID: 1519528010}
 --- !u!1 &1447620045
 GameObject:
   m_ObjectHideFlags: 0

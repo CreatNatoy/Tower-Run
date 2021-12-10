@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    [SerializeField] private PlayerTower _playerTower;
+    [SerializeField] private PlayerBehavior _playerBehavior; 
     [SerializeField] private GameObject _target; 
     [SerializeField] private Vector3 _offsetPosition;
     [SerializeField] private float _cameraSpeed; 
@@ -13,25 +13,24 @@ public class Camera : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerTower.HumanAddedCamera += OnHumanAdded;
-        _playerTower.HumanDepriveCamera += OnHummanDeprive;
+        _playerBehavior.HumanAddedCamera += OnHumanAdded;
+        _playerBehavior.HumanDepriveCamera += OnHummanDeprive;
     }
 
     private void OnDisable()
     {
-        _playerTower.HumanAddedCamera -= OnHumanAdded;
-        _playerTower.HumanDepriveCamera -= OnHummanDeprive;
+        _playerBehavior.HumanAddedCamera -= OnHumanAdded;
+        _playerBehavior.HumanDepriveCamera -= OnHummanDeprive;
     }
 
     private void Start()
     {
-        transform.LookAt(_playerTower.transform);
+        transform.LookAt(_playerBehavior.transform);
         _updateOffsetPosition = _offsetPosition; 
     }
 
     private void Update()
     {
-        //  transform.position = _playerTower.gameObject.transform.position + _offsetPosition;
         transform.position = GetPositionForCamera();
         if (_offsetPosition != _updateOffsetPosition)
         {
@@ -52,6 +51,6 @@ public class Camera : MonoBehaviour
 
     private Vector3 GetPositionForCamera()
     {
-        return new Vector3(_playerTower.gameObject.transform.position.x, _target.transform.position.y, _playerTower.gameObject.transform.position.z) + _offsetPosition;
+        return new Vector3(_playerBehavior.gameObject.transform.position.x, _target.transform.position.y, _playerBehavior.gameObject.transform.position.z) + _offsetPosition;
     }
 }
