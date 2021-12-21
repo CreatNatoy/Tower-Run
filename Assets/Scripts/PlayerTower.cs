@@ -41,7 +41,7 @@ public class PlayerTower : MonoBehaviour
         }
           if(collision.gameObject.TryGetComponent(out Finish finish))
         {
-            _gameBehavior.FinishGame(); 
+            _gameBehavior.FinishGame(_humans.Count); 
         }
           if(collision.gameObject.TryGetComponent(out Coin coin))
         {
