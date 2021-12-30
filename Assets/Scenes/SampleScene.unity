@@ -2631,7 +2631,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1376830365}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: OnPanel
+        m_MethodName: activatePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 267899234}
@@ -3626,7 +3626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5808a774d6d99d4aabc007c47bf6216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHuman: {fileID: 1884637874889457063, guid: 48bb763db206119498659853a21f6162, type: 3}
+  _startHumans:
+  - {fileID: 1884637874889457063, guid: 48bb763db206119498659853a21f6162, type: 3}
+  - {fileID: 7157209781013737008, guid: 49e2ef8b282c4c345a445a6ad1f57853, type: 3}
 --- !u!114 &1444506459
 MonoBehaviour:
   m_ObjectHideFlags: 0

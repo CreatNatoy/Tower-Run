@@ -8,7 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerBehavior))]
 public class PlayerTower : MonoBehaviour
 {
-    [SerializeField] private Human _startHuman; 
+    [SerializeField] private Human[] _startHumans; 
+    private Human _startHuman; 
 
     private GameBehavior _gameBehavior;
     private PlayerBehavior _playerBehavior;
@@ -18,10 +19,18 @@ public class PlayerTower : MonoBehaviour
     private void Start()
     {
         _gameBehavior = GetComponent<GameBehavior>();
-        _playerBehavior = GetComponent<PlayerBehavior>(); 
+        _playerBehavior = GetComponent<PlayerBehavior>();
+        CreateStartPlayer(); 
+    }
 
+    private void CreateStartPlayer()
+    {
         _humans = new List<Human>();
         Vector3 spawnPoint = transform.position;
+        if (PlayerPrefs.HasKey("Player"))
+            _startHuman = _startHumans[PlayerPrefs.GetInt("Player")];
+        else
+            _startHuman = _startHumans[0];
         _humans.Add(Instantiate(_startHuman, spawnPoint, Quaternion.identity, transform));
         _humans[0].Run();
     }

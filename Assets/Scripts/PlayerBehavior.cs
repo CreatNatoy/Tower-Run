@@ -21,6 +21,8 @@ public class PlayerBehavior : MonoBehaviour
     private int _counterCoins;
     private bool _oneCollisionObstacle = false;
 
+    public int CounterCoiuns => _counterCoins; 
+
     public event UnityAction<int> HumanDepriveCamera;
     public event UnityAction<int> HumanAddedCamera;
 

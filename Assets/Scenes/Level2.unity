@@ -235,11 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eead0ca2fdfb6f446915c9f4a810855f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _StarsLevel:
-  - {fileID: 1242052727}
-  - {fileID: 1639476454}
-  - {fileID: 510806261}
-  _FullStar: {fileID: 21300000, guid: fad8a87fd0972a1459c850d4f4bc6236, type: 3}
+  _starsLevel: []
+  _fullStar: {fileID: 0}
   _starSizeOne: 4
   _starSizeTwo: 5
   _starSizeThree: 6
@@ -1115,7 +1112,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 48134417}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: OnPanel
+        m_MethodName: activatePanel
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 281798867}
@@ -3701,7 +3698,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5808a774d6d99d4aabc007c47bf6216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHuman: {fileID: 1884637874889457063, guid: 48bb763db206119498659853a21f6162, type: 3}
+  _startHumans:
+  - {fileID: 1884637874889457063, guid: 48bb763db206119498659853a21f6162, type: 3}
+  - {fileID: 7157209781013737008, guid: 49e2ef8b282c4c345a445a6ad1f57853, type: 3}
 --- !u!114 &1297304221
 MonoBehaviour:
   m_ObjectHideFlags: 0

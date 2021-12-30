@@ -37,8 +37,14 @@ public class Menu : MonoBehaviour
         Time.timeScale = time; 
     }
 
+    public void ChooseSkinPlayer(int index)
+    {
+        PlayerPrefs.SetInt("Player", index); 
+    }
+
     public void DeleteKeys()
     {
         PlayerPrefs.DeleteAll(); 
     }
+
 }
