@@ -1891,7 +1891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4fab30ad360774391607d12cf9d796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 747318646}
+  _audioSourceEffect: {fileID: 747318646}
+  _audioSource: {fileID: 451035493}
   _jumpUp: {fileID: 8300000, guid: 1adb3340f40be904c88613dee72ab19e, type: 3}
   _jumpDown: {fileID: 8300000, guid: bfd7e48f6b747b64ea3743f169a34ca9, type: 3}
   _jumpStrong: {fileID: 8300000, guid: 798479e51f799d149baf42b0a89dfd15, type: 3}

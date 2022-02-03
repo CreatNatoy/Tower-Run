@@ -23,12 +23,12 @@ public class OpenLevelsUI : MonoBehaviour
             {
                 _buttonsLevels[i].interactable = true;
                 _buttonsLevels[i].gameObject.GetComponent<StarLevelUI>().ChangeSpriteStar(i + 1); 
-                Debug.Log("Open button: " + i);
+            //    Debug.Log("Open button: " + i);
             }
             else
             {
                 _buttonsLevels[i].interactable = false;
-                Debug.Log("Close button: " + i);
+            //    Debug.Log("Close button: " + i);
             }
         }
     }

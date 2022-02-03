@@ -39,7 +39,8 @@ public class Menu : MonoBehaviour
 
     public void ChooseSkinPlayer(int index)
     {
-        PlayerPrefs.SetInt("Player", index); 
+        PlayerPrefs.SetInt("Player", index);
+        Debug.Log("Choose Skin Player"); 
     }
 
     public void DeleteKeys()

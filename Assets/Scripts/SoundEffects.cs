@@ -4,31 +4,50 @@ using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _jumpUp, _jumpDown, _jumpStrong, _addCoin, _deleteHuman; 
+    [SerializeField] private AudioSource _audioSourceEffect;
+    [SerializeField] private AudioSource _audioSource; 
+    [SerializeField] private AudioClip _jumpUp, _jumpDown, _jumpStrong, _addCoin, _deleteHuman;
+
+    private void Start()
+    {
+        if(PlayerPrefs.HasKey("Sound"))
+        {
+            if (PlayerPrefs.GetInt("Sound") == 1)
+                SettingSound(true);
+            else
+                SettingSound(false); 
+        }
+
+    }
+
+    private void SettingSound(bool state)
+    {
+        _audioSourceEffect.enabled = state;
+        _audioSource.enabled = state;
+    }
 
     public void JumpUpSound()
     {
-        _audioSource.PlayOneShot(_jumpUp); 
+        _audioSourceEffect.PlayOneShot(_jumpUp); 
     }
 
     public void JumpDownSound()
     {
-        _audioSource.PlayOneShot(_jumpDown); 
+        _audioSourceEffect.PlayOneShot(_jumpDown); 
     }
 
     public void JumpStrongSound()
     {
-        _audioSource.PlayOneShot(_jumpStrong); 
+        _audioSourceEffect.PlayOneShot(_jumpStrong); 
     }
 
     public void AddCoinSound()
     {
-        _audioSource.PlayOneShot(_addCoin); 
+        _audioSourceEffect.PlayOneShot(_addCoin); 
     }
 
     public void DeleteHuman()
     {
-        _audioSource.PlayOneShot(_deleteHuman); 
+        _audioSourceEffect.PlayOneShot(_deleteHuman); 
     }
 }
