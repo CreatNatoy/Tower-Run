@@ -160,6 +160,7 @@ MonoBehaviour:
   - {fileID: 2565578930869608078, guid: 3722a13334c38f24ca121304d809e536, type: 3}
   - {fileID: 5677607009005770865, guid: 24b9e0f17eebd8a4b9272a220d5d723c, type: 3}
   - {fileID: 1050249380910522167, guid: 4eee5bcf0ece6a94c88897791c4dbac2, type: 3}
+  - {fileID: 5554285052006332050, guid: 2e43a84041d038a49b5e6fa942813055, type: 3}
   _bounceForce: 100
   _bounceRadius: 250
   _sizeHumons: {fileID: 7030532193095748078}
