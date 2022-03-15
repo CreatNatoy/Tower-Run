@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CoinUI : MonoBehaviour
 {
     [SerializeField] private Text _textCoin;
+    [SerializeField] private Save _saveCoin; 
 
     private void Start()
     {
-        if (!PlayerPrefs.HasKey("Coin"))
-            PlayerPrefs.SetInt("Coin", 0);
+        UpdateTextCoin();
+    }
 
-        _textCoin.text = PlayerPrefs.GetInt("Coin").ToString("D3");
+    public void UpdateTextCoin()
+    {
+        _textCoin.text = _saveCoin.GetKeyCoin().ToString("D3");
     }
 }

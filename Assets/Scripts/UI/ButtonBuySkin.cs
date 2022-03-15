@@ -7,6 +7,7 @@ public class ButtonBuySkin : MonoBehaviour
 {
    [SerializeField] private GameObject _buttonBuySkin;
    [SerializeField] private int _index;
+    [SerializeField] private CoinUI _cointUI; 
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class ButtonBuySkin : MonoBehaviour
         {
             PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - cost);
             PlayerPrefs.SetInt("ButtonBuySkin" + _index, 1);
+            _cointUI.UpdateTextCoin(); 
             _buttonBuySkin.SetActive(false);
             Debug.Log("Buy skin");
         }
