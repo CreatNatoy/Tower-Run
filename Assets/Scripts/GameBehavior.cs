@@ -33,7 +33,7 @@ public class GameBehavior : MonoBehaviour
 
     private void ActivePanel(GameObject panel)
     {
-        _menuCanvas.activatePanel(panel);
+        panel.SetActive(true); 
         int stopTime = 0; 
         _menuCanvas.TimeGame(stopTime);
     }

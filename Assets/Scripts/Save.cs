@@ -7,15 +7,26 @@ public class Save : MonoBehaviour
         CheckKeysSave();
     }
 
+    private void CheckKeysSave()
+    {
+        CheckKeyCoin();
+        CheckKeySound();
+    }
+
     public int GetKeyCoin()
     {
         return PlayerPrefs.GetInt("Coin");
     }
 
-    public int GetKeyLevel()
+    public void SetKeyCoin(int coin)
     {
-        CheckKeyLevel();
-        return PlayerPrefs.GetInt("Level");
+        PlayerPrefs.SetInt("Coin", coin); 
+    }    
+
+    private void CheckKeyCoin()
+    {
+        if (!PlayerPrefs.HasKey("Coin"))
+            PlayerPrefs.SetInt("Coin", 0);
     }
 
     public int GetKeyStarLevel(int index)
@@ -24,15 +35,16 @@ public class Save : MonoBehaviour
         return PlayerPrefs.GetInt("StarLevel" + index); 
     }
 
-    private void CheckKeysSave()
+    public void CheckKeyStarLevel(int index)
     {
-        CheckKeyCoin();
+        if (!PlayerPrefs.HasKey("StarLevel" + index))
+            PlayerPrefs.GetInt("StarLevel" + index, 0);
     }
 
-    private void CheckKeyCoin()
+    public int GetKeyLevel()
     {
-        if (!PlayerPrefs.HasKey("Coin"))
-            PlayerPrefs.SetInt("Coin", 0);
+        CheckKeyLevel();
+        return PlayerPrefs.GetInt("Level");
     }
 
     public void CheckKeyLevel()
@@ -41,9 +53,45 @@ public class Save : MonoBehaviour
             PlayerPrefs.SetInt("Level", 1);
     }
 
-    public void CheckKeyStarLevel(int index)
+    public void SetKeyPlayer(int index)
     {
-        if (!PlayerPrefs.HasKey("StarLevel" + index))
-            PlayerPrefs.GetInt("StarLevel" + index, 0);
+        PlayerPrefs.SetInt("Player", index);
+    }
+
+    public int GetKeySound()
+    {
+        return PlayerPrefs.GetInt("Sound");
+    }
+
+    public void SetKeySound(int value)
+    {
+        PlayerPrefs.SetInt("Sound", value);
+    }
+
+    public void CheckKeySound()
+    {
+        if (!PlayerPrefs.HasKey("Sound"))
+            PlayerPrefs.SetInt("Sound", 1);
+    }
+
+    public int GetKeySkin(int index)
+    {
+        return PlayerPrefs.GetInt("ButtonBuySkin" + index);
+    }
+
+    public void SetKeySkin(int index)
+    {
+        PlayerPrefs.SetInt("ButtonBuySkin" + index, 1);
+    }
+
+    public void CheckKeySkin(int index)
+    {
+        if (!PlayerPrefs.HasKey("ButtonBuySkin" + index))
+            PlayerPrefs.SetInt("ButtonBuySkin" + index, 0);
+    }
+
+    public void DeleteKeys()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }

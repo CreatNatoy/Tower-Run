@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI; 
 
 public class Menu : MonoBehaviour
 {
-    
+    [SerializeField] private Save _savePlayerSkin; 
+
     public void Exit()
     {
         Application.Quit(); 
@@ -22,16 +20,6 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
     }
 
-    public void activatePanel(GameObject panel)
-    {
-        panel.SetActive(true); 
-    }
-
-    public void OffPanel(GameObject panel)
-    {
-        panel.SetActive(false); 
-    }
-
     public void TimeGame (int time)
     {
         Time.timeScale = time; 
@@ -39,13 +27,6 @@ public class Menu : MonoBehaviour
 
     public void ChooseSkinPlayer(int index)
     {
-        PlayerPrefs.SetInt("Player", index);
-        Debug.Log("Choose Skin Player"); 
+        _savePlayerSkin.SetKeyPlayer(index); 
     }
-
-    public void DeleteKeys()
-    {
-        PlayerPrefs.DeleteAll(); 
-    }
-
 }

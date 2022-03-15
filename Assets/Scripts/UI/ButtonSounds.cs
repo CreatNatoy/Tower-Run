@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,24 +5,28 @@ public class ButtonSounds : MonoBehaviour
 {
     [SerializeField] private Sprite _soundOn;
     [SerializeField] private Sprite _soundOff;
-    [SerializeField] private Image _sound; 
+    [SerializeField] private Image _sound;
+    [SerializeField] private Save _saveSound;
+
+    private int OnSound = 1;
+    private int OffSound = 0; 
 
     private void Start()
     {
-            PlayerPrefs.SetInt("Sound", 1);
+        _saveSound.SetKeySound(OnSound); 
              _sound.sprite = _soundOn;
     }
 
     public void ChangeSound()
     {
-        if(PlayerPrefs.GetInt("Sound") == 1)
+        if(_saveSound.GetKeySound() == 1)
         {
-            PlayerPrefs.SetInt("Sound", 0);
+            _saveSound.SetKeySound(OffSound);
             _sound.sprite = _soundOff;
         }
-        else if (PlayerPrefs.GetInt("Sound") == 0)
+        else if (_saveSound.GetKeySound() == 0)
         {
-            PlayerPrefs.SetInt("Sound", 1);
+            _saveSound.SetKeySound(OnSound);
             _sound.sprite = _soundOn;
         }
 
