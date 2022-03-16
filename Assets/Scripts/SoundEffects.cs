@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundEffects : MonoBehaviour
@@ -7,23 +5,29 @@ public class SoundEffects : MonoBehaviour
     [SerializeField] private AudioSource _audioSourceEffect;
     [SerializeField] private AudioSource _audioSource; 
     [SerializeField] private AudioClip _jumpUp, _jumpDown, _jumpStrong, _addCoin, _deleteHuman;
+    [SerializeField] private Save _saveSound; 
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("Sound"))
-        {
-            if (PlayerPrefs.GetInt("Sound") == 1)
-                SettingSound(true);
-            else
-                SettingSound(false); 
-        }
-
+        SettingSound();
     }
 
-    private void SettingSound(bool state)
+    private void SettingSound()
     {
-        _audioSourceEffect.enabled = state;
-        _audioSource.enabled = state;
+        if (_saveSound.GetKeySound() == 1)
+        {
+            OffOrOnSound(0.5f, 1); 
+        }
+        else
+        {
+            OffOrOnSound(0, 0);
+        }
+    }
+
+    private void OffOrOnSound(float volumeSource, float volumeEffect)
+    {
+        _audioSource.volume = volumeSource;
+        _audioSourceEffect.volume = volumeEffect;
     }
 
     public void JumpUpSound()
@@ -46,7 +50,7 @@ public class SoundEffects : MonoBehaviour
         _audioSourceEffect.PlayOneShot(_addCoin); 
     }
 
-    public void DeleteHuman()
+    public void DeleteHumanSound()
     {
         _audioSourceEffect.PlayOneShot(_deleteHuman); 
     }

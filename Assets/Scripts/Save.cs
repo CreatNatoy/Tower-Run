@@ -11,6 +11,7 @@ public class Save : MonoBehaviour
     {
         CheckKeyCoin();
         CheckKeySound();
+        CheckKeyPlayer();
     }
 
     public int GetKeyCoin()
@@ -53,9 +54,20 @@ public class Save : MonoBehaviour
             PlayerPrefs.SetInt("Level", 1);
     }
 
+    public int GetKeyPlayer()
+    {
+        return PlayerPrefs.GetInt("Player");
+    }
+
     public void SetKeyPlayer(int index)
     {
         PlayerPrefs.SetInt("Player", index);
+    }
+
+    public void CheckKeyPlayer()
+    {
+        if (!PlayerPrefs.HasKey("Player"))
+            PlayerPrefs.SetInt("Player", 0);
     }
 
     public int GetKeySound()

@@ -1265,6 +1265,7 @@ MonoBehaviour:
   _buttonBuySkin: {fileID: 1333693964}
   _index: 4
   _cointUI: {fileID: 1667653520}
+  _saveSkin: {fileID: 23739761}
 --- !u!1 &463691483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1601,6 +1602,7 @@ MonoBehaviour:
   _buttonBuySkin: {fileID: 166829758}
   _index: 2
   _cointUI: {fileID: 1667653520}
+  _saveSkin: {fileID: 23739761}
 --- !u!1 &542785886
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,7 +3243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1039060668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4499,6 +4501,7 @@ GameObject:
   - component: {fileID: 1305874117}
   - component: {fileID: 1305874119}
   - component: {fileID: 1305874118}
+  - component: {fileID: 1305874120}
   m_Layer: 5
   m_Name: PanelChoseLevel
   m_TagString: Untagged
@@ -4567,6 +4570,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305874116}
   m_CullTransparentMesh: 1
+--- !u!114 &1305874120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305874116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0343e612c337254fa828cda49c7a8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonsLevels:
+  - {fileID: 1257759138}
+  - {fileID: 1382480316}
+  _saveLevel: {fileID: 23739761}
 --- !u!1 &1321131485
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,6 +5890,7 @@ MonoBehaviour:
   _buttonBuySkin: {fileID: 777709566}
   _index: 3
   _cointUI: {fileID: 1667653520}
+  _saveSkin: {fileID: 23739761}
 --- !u!1 &1627618952
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,6 +6545,7 @@ MonoBehaviour:
   _buttonBuySkin: {fileID: 1261125190}
   _index: 0
   _cointUI: {fileID: 1667653520}
+  _saveSkin: {fileID: 23739761}
 --- !u!1 &1868118949
 GameObject:
   m_ObjectHideFlags: 0
@@ -6909,7 +6930,6 @@ GameObject:
   - component: {fileID: 1997789775}
   - component: {fileID: 1997789774}
   - component: {fileID: 1997789773}
-  - component: {fileID: 1997789778}
   - component: {fileID: 1997789779}
   m_Layer: 5
   m_Name: Canvas
@@ -6930,6 +6950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a263bf65b84abe458e34e62ae4f0662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _savePlayerSkin: {fileID: 23739761}
 --- !u!114 &1997789774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7017,22 +7038,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1997789778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1997789772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0343e612c337254fa828cda49c7a8e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _buttonsLevels:
-  - {fileID: 1257759138}
-  - {fileID: 1382480316}
-  _saveLevel: {fileID: 23739761}
 --- !u!114 &1997789779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7048,6 +7053,7 @@ MonoBehaviour:
   _soundOn: {fileID: 21300000, guid: b68963b40e752ac4a85ec8664946a43d, type: 3}
   _soundOff: {fileID: 21300000, guid: 16028f327ef50024cb2f800a67e306b0, type: 3}
   _sound: {fileID: 1627618955}
+  _saveSound: {fileID: 23739761}
 --- !u!1 &2006358900
 GameObject:
   m_ObjectHideFlags: 0
@@ -7561,6 +7567,7 @@ MonoBehaviour:
   _buttonBuySkin: {fileID: 1868118949}
   _index: 1
   _cointUI: {fileID: 1667653520}
+  _saveSkin: {fileID: 23739761}
 --- !u!1 &2118912831
 GameObject:
   m_ObjectHideFlags: 0

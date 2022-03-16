@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +11,7 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField] private Transform _distanceChecker;
     [SerializeField] private float _fixationMaxDistance;
     [SerializeField] private BoxCollider _checkCollider;
-    [SerializeField] private Checker _checker;
+    [SerializeField] private Checker _downPoint;
 
     private GameBehavior _gameBehavior;
     private Jumper _heightPlayerTower;
@@ -80,7 +79,7 @@ public class PlayerBehavior : MonoBehaviour
         _humans.RemoveRange(0, sizeObstacle);
         _humans[0].Run();
         HumanDepriveCamera?.Invoke(sizeObstacle);
-        _soundEffects.DeleteHuman();
+        _soundEffects.DeleteHumanSound();
     }
 
     private bool JumpedObstacle()
@@ -116,10 +115,9 @@ public class PlayerBehavior : MonoBehaviour
             }
             else
                 _rigidbody.velocity = Vector3.zero;
-     
-        }
-        if (collisionTower != null)
+
             collisionTower.Break();
+        }
     }
 
     private void InsertHuman(Human collectedHumans, List<Human> _humans)
@@ -137,7 +135,7 @@ public class PlayerBehavior : MonoBehaviour
 
     public void DisplaceCheckers()
     {
-        _distanceChecker.position = _checker.GetPosition();
+        _distanceChecker.position = _downPoint.GetPosition();
         _checkCollider.center = _distanceChecker.localPosition;
     }
 }
