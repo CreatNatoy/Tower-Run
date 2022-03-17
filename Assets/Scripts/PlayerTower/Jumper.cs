@@ -26,48 +26,34 @@ public class Jumper : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && _isGrounded)
-        {
-            _isGrounded = false;
-            _rigidbody.AddForce(Vector3.up * _jumpForce);
-            _soundEffects.JumpUpSound();
-
-            if (_startJumpForce != _jumpForce)
-                _soundEffects.JumpStrongSound();
-        }
+            Jump();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Jump()
     {
-        if (collision.gameObject.TryGetComponent(out Road rouad))
-        {
-            _heightPlayerTower = transform.position.y;
-            _updateCheker.DisplaceCheckers();
-            _soundEffects.JumpDownSound();
-            _isGrounded = true;
-        }
+        _isGrounded = false;
+        _rigidbody.AddForce(Vector3.up * _jumpForce);
+        _soundEffects.JumpUpSound();
+
+        if (_startJumpForce != _jumpForce)
+            _soundEffects.JumpStrongRedPlatformSound();
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out PointJump pointJump))
-        {
-            Tower ColliderTower = pointJump.GetComponentInParent<Tower>();
-            ChangeJumpForse(ColliderTower.GetSizeHumans());
-            pointJump.ChangeColor();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out PointJump pointJump))
-        {
-            _jumpForce = _startJumpForce;
-            pointJump.StartColor();
-        }
-    }
-
-    private void ChangeJumpForse(int jumpForse)
+    public void AddJumpForse(int jumpForse)
     {
         _jumpForce = _jumpForce + 0.1f + (jumpForse - 1) * 25f;
+    }
+
+    public void LandingRoad()
+    {
+        _heightPlayerTower = transform.position.y;
+        _updateCheker.DisplaceCheckers();
+        _soundEffects.JumpDownSound();
+        _isGrounded = true;
+    }
+
+    public void StartJumpForse()
+    {
+        _jumpForce = _startJumpForce; 
     }
 }

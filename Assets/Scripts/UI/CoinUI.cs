@@ -8,7 +8,7 @@ public class CoinUI : MonoBehaviour
 
     private void Start()
     {
-        UpdateTextCoin();
+            UpdateTextCoin(); 
     }
 
     public void UpdateTextCoin()

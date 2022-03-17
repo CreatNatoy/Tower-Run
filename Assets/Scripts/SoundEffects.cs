@@ -40,7 +40,7 @@ public class SoundEffects : MonoBehaviour
         _audioSourceEffect.PlayOneShot(_jumpDown); 
     }
 
-    public void JumpStrongSound()
+    public void JumpStrongRedPlatformSound()
     {
         _audioSourceEffect.PlayOneShot(_jumpStrong); 
     }

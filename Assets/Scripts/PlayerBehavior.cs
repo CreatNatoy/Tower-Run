@@ -1,46 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Jumper))]
 public class PlayerBehavior : MonoBehaviour
 {
-    [SerializeField] private Text _textCoins;
     [SerializeField] private SoundEffects _soundEffects;
     [SerializeField] private Transform _distanceChecker;
     [SerializeField] private float _fixationMaxDistance;
     [SerializeField] private BoxCollider _checkCollider;
     [SerializeField] private Checker _downPoint;
+    [SerializeField] private GameBehavior _gameBehavior;
 
-    private GameBehavior _gameBehavior;
     private Jumper _heightPlayerTower;
     private Rigidbody _rigidbody;
-
-    private int _counterCoins;
     private bool _oneCollisionObstacle = false;
-
-    public int CounterCoiuns => _counterCoins; 
 
     public event UnityAction<int> HumanDepriveCamera;
     public event UnityAction<int> HumanAddedCamera;
 
     private void Start()
     {
-        _gameBehavior = GetComponent<GameBehavior>();
         _heightPlayerTower = GetComponent<Jumper>();
-        _rigidbody = GetComponent<Rigidbody>(); 
+        _rigidbody = GetComponent<Rigidbody>();
 
     }
-
-    public void AddCoin(Coin coin)
-    {
-        coin.gameObject.SetActive(false);
-        _counterCoins++;
-        _textCoins.text = _counterCoins.ToString("D3");
-        _soundEffects.AddCoinSound();
-    }
-
 
     public void CollisionObstacle(Obstacle obstacle, List<Human> _humans)
     {
@@ -84,7 +68,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private bool JumpedObstacle()
     {
-        float heightObstacle = 1f; 
+        float heightObstacle = 1f;
         if (_heightPlayerTower.HeightPlayerTower < transform.position.y - heightObstacle)
         {
             return true;

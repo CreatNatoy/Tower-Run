@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Checker : MonoBehaviour
 {
-    [SerializeField] private PlayerTower _playerTower;
+    [SerializeField] private PlayerTowerSpawn _playerTower;
 
     private void Update()
     {

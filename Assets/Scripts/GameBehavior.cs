@@ -1,21 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(PlayerBehavior))]
 public class GameBehavior : MonoBehaviour
 {
     [SerializeField] private Menu _menuCanvas;
     [SerializeField] private StarLevel _starLevel;
     [SerializeField] private GameObject _panelGameOver;
     [SerializeField] private GameObject _panelFinish;
-    private PlayerBehavior _playerBehavior;
-
-    private void Start()
-    {
-        _playerBehavior = GetComponent<PlayerBehavior>(); 
-    }
+    [SerializeField] private CounterCoin _counterCoin;
+    [SerializeField] private Save _save;
 
     public void GameOver()
     {
@@ -27,33 +20,25 @@ public class GameBehavior : MonoBehaviour
         ActivePanel(_panelFinish);
         _starLevel.AddStarLevel(sizeTower);
         SaveLevel();
-        SaveCoin(); 
+        SaveCoin();
     }
 
 
     private void ActivePanel(GameObject panel)
     {
-        panel.SetActive(true); 
-        int stopTime = 0; 
+        panel.SetActive(true);
+        int stopTime = 0;
         _menuCanvas.TimeGame(stopTime);
     }
 
     private void SaveLevel()
     {
-        if (PlayerPrefs.HasKey("Level"))
-        {
-            if (PlayerPrefs.GetInt("Level") <= SceneManager.GetActiveScene().buildIndex)
-                PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else
-            PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex);
+        if (_save.GetKeyLevel() <= SceneManager.GetActiveScene().buildIndex)
+            _save.SetKeyLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void SaveCoin()
     {
-        if (PlayerPrefs.HasKey("Coin"))
-            PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") + _playerBehavior.CounterCoiuns);
-        else
-            PlayerPrefs.SetInt("Coin", _playerBehavior.CounterCoiuns); 
+        _save.SetKeyCoin(_save.GetKeyCoin() + _counterCoin.CounterCoiuns); 
     }
 }

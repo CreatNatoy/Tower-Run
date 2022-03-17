@@ -9,9 +9,9 @@ public class ButtonBuySkin : MonoBehaviour
 
     private void Start()
     {
-        _saveSkin.CheckKeySkin(_index); 
+        _saveSkin.CheckKeyButtonBuySkin(_index); 
 
-        if (_saveSkin.GetKeySkin(_index) == 1)
+        if (_saveSkin.GetKeyButtonBuySkin(_index) == 1)
             _buttonBuySkin.SetActive(false);
     }
 
@@ -19,8 +19,9 @@ public class ButtonBuySkin : MonoBehaviour
     {
         if (_saveSkin.GetKeyCoin() > cost)
         {
-            _saveSkin.SetKeyCoin(_saveSkin.GetKeyCoin() - cost);
-            _saveSkin.SetKeyCoin(_index); 
+            int coins = _saveSkin.GetKeyCoin() - cost; 
+            _saveSkin.SetKeyCoin(coins);
+            _saveSkin.SetKeyButtonBuySkin(_index); 
             _cointUI.UpdateTextCoin();
             _buttonBuySkin.SetActive(false);
         }

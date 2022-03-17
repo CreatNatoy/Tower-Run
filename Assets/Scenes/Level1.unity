@@ -3157,6 +3157,8 @@ GameObject:
   - component: {fileID: 1376830361}
   - component: {fileID: 1376830365}
   - component: {fileID: 1376830366}
+  - component: {fileID: 1376830367}
+  - component: {fileID: 1376830368}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3262,7 +3264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a263bf65b84abe458e34e62ae4f0662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _savePlayerSkin: {fileID: 0}
+  _savePlayerSkin: {fileID: 1370569675}
 --- !u!114 &1376830366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3283,6 +3285,38 @@ MonoBehaviour:
   _starSizeOne: 4
   _starSizeTwo: 5
   _starSizeThree: 6
+--- !u!114 &1376830367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376830360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bca24a9ec1afb479bbf682383f88b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textCoins: {fileID: 1404849340}
+  _soundEffects: {fileID: 826121033}
+--- !u!114 &1376830368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376830360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b121a789663026448b7d26f92ff5d8f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuCanvas: {fileID: 1376830365}
+  _starLevel: {fileID: 1376830366}
+  _panelGameOver: {fileID: 2015156921}
+  _panelFinish: {fileID: 1793426033}
+  _counterCoin: {fileID: 1376830367}
+  _save: {fileID: 1370569675}
 --- !u!1 &1377270533
 GameObject:
   m_ObjectHideFlags: 0
@@ -3604,8 +3638,8 @@ GameObject:
   - component: {fileID: 1444506454}
   - component: {fileID: 1444506457}
   - component: {fileID: 1444506458}
-  - component: {fileID: 1444506459}
   - component: {fileID: 1444506461}
+  - component: {fileID: 1444506462}
   m_Layer: 7
   m_Name: PlayerTower
   m_TagString: Untagged
@@ -3704,22 +3738,6 @@ MonoBehaviour:
   - {fileID: 2658563054997623877, guid: 5f170903290e69341b37b9f2a2482dce, type: 3}
   - {fileID: 6288887565946513155, guid: ff021510324253b4eafaaf077533ea13, type: 3}
   _savePlayerSkin: {fileID: 1370569675}
---- !u!114 &1444506459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444506452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b121a789663026448b7d26f92ff5d8f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menuCanvas: {fileID: 1376830365}
-  _starLevel: {fileID: 1376830366}
-  _panelGameOver: {fileID: 2015156921}
-  _panelFinish: {fileID: 1793426033}
 --- !u!114 &1444506461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3732,12 +3750,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed49fbfdb0889b4ca7f90082bdb030d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textCoins: {fileID: 1404849340}
   _soundEffects: {fileID: 826121033}
   _distanceChecker: {fileID: 891382834}
   _fixationMaxDistance: 0.3
   _checkCollider: {fileID: 1444506453}
   _downPoint: {fileID: 1519528010}
+  _gameBehavior: {fileID: 1376830368}
+--- !u!114 &1444506462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444506452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba6a21d2c7d958479b6b1b1262888a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _counterCoin: {fileID: 1376830367}
+  _gameBehavior: {fileID: 1376830368}
 --- !u!1 &1447620045
 GameObject:
   m_ObjectHideFlags: 0

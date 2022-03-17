@@ -12,6 +12,7 @@ public class Save : MonoBehaviour
         CheckKeyCoin();
         CheckKeySound();
         CheckKeyPlayer();
+        CheckKeyLevel(); 
     }
 
     public int GetKeyCoin()
@@ -44,8 +45,12 @@ public class Save : MonoBehaviour
 
     public int GetKeyLevel()
     {
-        CheckKeyLevel();
         return PlayerPrefs.GetInt("Level");
+    }
+
+    public void SetKeyLevel(int level)
+    {
+        PlayerPrefs.SetInt("Level", level);
     }
 
     public void CheckKeyLevel()
@@ -86,17 +91,17 @@ public class Save : MonoBehaviour
             PlayerPrefs.SetInt("Sound", 1);
     }
 
-    public int GetKeySkin(int index)
+    public int GetKeyButtonBuySkin(int index)
     {
         return PlayerPrefs.GetInt("ButtonBuySkin" + index);
     }
 
-    public void SetKeySkin(int index)
+    public void SetKeyButtonBuySkin(int index)
     {
         PlayerPrefs.SetInt("ButtonBuySkin" + index, 1);
     }
 
-    public void CheckKeySkin(int index)
+    public void CheckKeyButtonBuySkin(int index)
     {
         if (!PlayerPrefs.HasKey("ButtonBuySkin" + index))
             PlayerPrefs.SetInt("ButtonBuySkin" + index, 0);
