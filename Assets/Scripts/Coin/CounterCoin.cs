@@ -9,7 +9,7 @@ public class CounterCoin : MonoBehaviour
 
     public int CounterCoiuns => _counterCoins; 
 
-    public void AddCoin(Coin coin)
+    public void AddCoin(CoinRotate coin)
     {
         coin.gameObject.SetActive(false);
         _counterCoins++;

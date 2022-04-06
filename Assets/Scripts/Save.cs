@@ -37,6 +37,11 @@ public class Save : MonoBehaviour
         return PlayerPrefs.GetInt("StarLevel" + index); 
     }
 
+    public void SetKeyStarLevel(int index, int size)
+    {
+        PlayerPrefs.SetInt("StarLevel" + index, size);
+    }
+
     public void CheckKeyStarLevel(int index)
     {
         if (!PlayerPrefs.HasKey("StarLevel" + index))

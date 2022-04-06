@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class CoinRotate : MonoBehaviour
 {
     [SerializeField] private float _speedRotation; 
 

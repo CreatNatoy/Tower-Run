@@ -52,7 +52,7 @@ public class PlayerTowerCollison : MonoBehaviour
             pointJump.ChangeColor();
         }
 
-        if (other.gameObject.TryGetComponent(out Coin coin))
+        if (other.gameObject.TryGetComponent(out CoinRotate coin))
         {
             _counterCoin.AddCoin(coin);
         }
