@@ -9,7 +9,8 @@ public class ButtonSounds : MonoBehaviour
     [SerializeField] private Save _saveSound;
 
     private int OnSound = 1;
-    private int OffSound = 0; 
+    private int OffSound = 0;
+    private bool menuSound = true; 
 
     private void Start()
     {
@@ -30,5 +31,19 @@ public class ButtonSounds : MonoBehaviour
             _sound.sprite = _soundOn;
         }
 
+    }
+
+    public void MenuSound(AudioSource audio)
+    {
+        if(menuSound)
+        {
+            menuSound = false;
+            audio.enabled = false;
+        }
+        else
+        {
+            menuSound = true;
+            audio.enabled = true;
+        }
     }
 }
